@@ -1,0 +1,15 @@
+{
+    "name": "personalChatBot",
+    "services": [
+        {
+            "type": "endpoint",
+            "name": "pcb",
+            "endpoint": "http://localhost:3978/api/messages",
+            "appId": "",
+            "appPassword": "",
+            "id": "1"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0"
+}
