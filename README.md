@@ -3,6 +3,26 @@ Answers questions regarding tribhuvans tech skills based on resume
 
 This bot has been created using [Microsoft Bot Framework][10], it shows how to create a simple echo bot with state. The bot maintains a simple counter that increases with each message from the user. This bot example uses [`restify`][1].
 
+# How bot works?
+1. The message activity carries conversation information between the parties
+2. Activities arrive at the bot from the Bot Framework Service via an HTTP POST request
+3. Processing starts with the HTTP POST request, with the activity information carried as a JSON payload, arriving at the web server from bot frame work, this will be in node.js.
+4. Adapter is the conductor of the framework, it creates activity object and hands over to adapter process activity method along with authentication details.
+5. After receiving object adapter creates turn context object and calls the middleware
+6. Processing continues to the bot logic after middleware, the pipeline completes, and the adapter disposes of the turn context object
+7. Application logic goes in bots turn handler,  turn handler is responsible for response for any given inbound activity. these reponse are again sent out using turn context send activity method, calling send activity will send msg to user channel
+8. Middleware operate on the activity both before and after the bot's turn handler and have access to the turn context for that activity
+9. the final stage of the middleware pipeline is a callback to invoke the turn handler of the bot, before returning up the stack
+10. The turn context provides activity response methods to allow code to respond to an activity, they are send activity, update activity, delete activity
+11. Response methods  runs in an asynchronous process
+12. send activities method, which allows you to send an ordered set of activities, to make sure that they make sense in whatever order they are received by the user
+13. Each new activity gets a new thread to execute on. When the thread to process the activity is created, the list of handlers for that activity is copied to that new thread. No handlers added after that point will be executed for that specific activity event
+
+
+
+
+
+
 # To run the bot
 - Install modules and start the bot
     ```bash
